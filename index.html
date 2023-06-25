@@ -17708,61 +17708,12 @@ Name: Numero_expedient, dtype: int64</pre>
 </div>
 </div>
 </div>
-</div></section><section ><div id="cell-id=71d15671" class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+</div></section><section ><div id="cell-id=325c900e" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[39]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create Dash application</span>
-<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-
-<span class="c1"># Define the 2 options of the dropdown</span>
-<span class="n">dropdown_options</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;la Dreta de l&#39;Eixample&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;la Dreta de l&#39;Eixample&quot;</span><span class="p">},</span>
-    <span class="p">{</span><span class="s2">&quot;label&quot;</span><span class="p">:</span> <span class="s2">&quot;Other Zones&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="s2">&quot;Other Zones&quot;</span><span class="p">}</span>
-<span class="p">]</span>
-
-
-<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
-    <span class="c1"># Set dropdown options</span>
-    <span class="n">dcc</span><span class="o">.</span><span class="n">Dropdown</span><span class="p">(</span>
-        <span class="nb">id</span><span class="o">=</span><span class="s2">&quot;dropdown&quot;</span><span class="p">,</span>
-        <span class="n">options</span><span class="o">=</span><span class="n">dropdown_options</span><span class="p">,</span>
-        <span class="n">value</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-        <span class="n">placeholder</span><span class="o">=</span><span class="s2">&quot;Zone&quot;</span><span class="p">,</span>
-    <span class="p">),</span>
-    <span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s2">&quot;graph&quot;</span><span class="p">),</span>
-<span class="p">])</span>
-
-<span class="c1"># Update the graph when changing the dropdown choice</span>
-<span class="nd">@app</span><span class="o">.</span><span class="n">callback</span><span class="p">(</span>
-    <span class="n">dash</span><span class="o">.</span><span class="n">dependencies</span><span class="o">.</span><span class="n">Output</span><span class="p">(</span><span class="s2">&quot;graph&quot;</span><span class="p">,</span> <span class="s2">&quot;figure&quot;</span><span class="p">),</span>
-    <span class="p">[</span><span class="n">dash</span><span class="o">.</span><span class="n">dependencies</span><span class="o">.</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;dropdown&quot;</span><span class="p">,</span> <span class="s2">&quot;value&quot;</span><span class="p">)]</span>
-<span class="p">)</span>
-<span class="k">def</span> <span class="nf">update_graph</span><span class="p">(</span><span class="n">selected_option</span><span class="p">):</span>
-    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">df_pedestrian_corrected</span><span class="p">[</span><span class="n">df_pedestrian_corrected</span><span class="p">[</span><span class="s2">&quot;Nom_barri&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">selected_option</span><span class="p">]</span>
-    
-    <span class="c1"># Create the interactive histogram (by percent)</span>
-    <span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">filtered_data</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;Descripcio_causa_vianant&quot;</span><span class="p">,</span> <span class="n">histnorm</span><span class="o">=</span><span class="s2">&quot;percent&quot;</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">fig</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div></section><section ><div id="cell-id=6f56a9bb" class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[40]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[45]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Run Dash application</span>
